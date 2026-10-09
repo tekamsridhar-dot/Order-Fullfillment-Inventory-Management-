@@ -14,6 +14,7 @@ class IdempotencyKey(Base):
     endpoint: Mapped[str] = mapped_column(String(255),nullable=False)
     response_status: Mapped[int | None] = mapped_column(Integer,nullable=True)
     response_body: Mapped[dict | None] = mapped_column(JSON,nullable=True)
+    request_hash: Mapped[str] = mapped_column(String(64),nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True),
                                                  default=lambda: datetime.now(timezone.utc),
                                                  nullable=False)
